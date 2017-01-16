@@ -10,6 +10,7 @@ module.exports = {
   },
   module: {
     rules: [
+      {test: /\.css$/, use: [ 'style-loader', 'css-loader' ]},
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -35,7 +36,8 @@ module.exports = {
         options: {
           name: '[name].[ext]?[hash]'
         }
-      }
+      },
+
     ]
   },
   resolve: {

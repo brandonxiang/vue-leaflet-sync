@@ -1,46 +1,59 @@
 <template>
   <div class="HolyGrail">
-  <header>
-  </header>
+  <navbar></navbar>
   <div class="HolyGrail-body">
-    <main class="HolyGrail-conten"></main>
-    <nav class="HolyGrail-nav"></nav>
+    <div class="HolyGrail-content"><MapControl></MapControl></div>
+    <nav class="HolyGrail-nav"><Sidebar></Sidebar></nav>
   </div>
   </div>
 </template>
 
 <script>
+import Navbar from './component/navbar.vue'
+import MapControl from './component/mapcontrol.vue'
+import Sidebar from './component/sidebar.vue'
+
+export default{
+components:{Navbar,Sidebar,MapControl},
+data:()=>({
+
+})
+}
+
 </script>
 
 <style>
-.HolyGrail{
-  display: flex;
-  min-height:100vh;
-  flex-direction: column;
-}
+   body{
+     margin:0;
+   }
 
-header{
-  flex:1;
-  height:200px;
-}
+    .HolyGrail {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+    }
 
-.HolyGrail-body{
-  display:flex;
-  flex:1;
-}
+    header {
+        flex: 1;
+        height: 200px;
+    }
 
-.HolyGrail-content {
-  flex: 1;
-}
+    .HolyGrail-body {
+        display: flex;
+        flex: 1;
+    }
 
-.HolyGrail-nav, .HolyGrail-ads {
-  /* 两个边栏的宽度设为12em */
-  flex: 0 0 12em;
-}
+    .HolyGrail-content {
+        flex: 1;
+        position:relative;
+    }
 
-.HolyGrail-nav {
-  /* 导航放到最左边 */
-  order: -1;
-}
+    .HolyGrail-nav,
+    .HolyGrail-ads {
+        flex: 0 0 12em;
+    }
 
+    .HolyGrail-nav {
+        order: -1;
+    }
 </style>

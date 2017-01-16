@@ -1,8 +1,7 @@
 # vue-leaflet-sync
-A demo to make leaflet-sync system by vue.js framework
+A demo to present [leaflet-sync]() system by vue.js framework
 
 THis project is built by [Vue Cli]().
-
 
 ## Build Setup
 
