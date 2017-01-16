@@ -2,7 +2,7 @@
   <div class="HolyGrail">
   <navbar></navbar>
   <div class="HolyGrail-body">
-    <div class="HolyGrail-content"><MapControl></MapControl></div>
+    <MapControl class="HolyGrail-content"></MapControl>
     <nav class="HolyGrail-nav"><Sidebar></Sidebar></nav>
   </div>
   </div>

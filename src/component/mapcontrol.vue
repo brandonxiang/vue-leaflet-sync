@@ -1,27 +1,33 @@
 <template>
-
-<div id="map">
+<div class="map">
+<div id="mapleft"></div>
+<div id="mapright"></div>
 </div>
-
 </template>
 
 <script>
 
 import L from 'leaflet'
 import css from '../../node_modules/leaflet/dist/leaflet.css';
+import '../libs/L.Map.Sync.js'
 
 export default {
     props: [],
     mounted() {
-        var map = L.map('map').setView([51.505, -0.09], 13);
+        var mapLeft = L.map('mapleft').setView([51.505, -0.09], 13);
 
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+        }).addTo(mapLeft);
 
-        L.marker([51.5, -0.09]).addTo(map)
-            .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-            .openPopup();
+        var mapRight = L.map('mapright').setView([51.505, -0.09], 13);
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(mapRight);
+
+        mapLeft.sync(mapRight)
+        mapRight.sync(mapLeft)
     }
 }
 
@@ -30,10 +36,14 @@ export default {
 <style>
 
 
-#map {
-    position:absolute;
-    height: 100%;
-    width: 100%;
+.map {
+  display:flex;
+  justify-content: space-between;
+  width:100%
+}
+
+#mapleft,#mapright{
+  width:50%;
 }
 
 </style>
