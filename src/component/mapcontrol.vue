@@ -12,7 +12,7 @@ import css from '../../node_modules/leaflet/dist/leaflet.css';
 import '../libs/L.Map.Sync.js'
 
 export default {
-    props: [],
+    props: [sync],
     mounted() {
         var mapLeft = L.map('mapleft').setView([51.505, -0.09], 13);
 
@@ -26,8 +26,11 @@ export default {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(mapRight);
 
-        mapLeft.sync(mapRight)
-        mapRight.sync(mapLeft)
+
+        if(this.sync){
+          mapLeft.sync(mapRight)
+          mapRight.sync(mapLeft)
+        }
     }
 }
 
