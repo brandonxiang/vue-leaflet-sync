@@ -1,31 +1,7 @@
-<template>
-  <div class="HolyGrail">
-  <navbar></navbar>
-  <div class="HolyGrail-body">
-    <MapControl class="HolyGrail-content"></MapControl>
-    <nav class="HolyGrail-nav"><Sidebar></Sidebar></nav>
-  </div>
-  </div>
-</template>
-
-<script>
-import Navbar from './component/navbar.vue'
-import MapControl from './component/mapcontrol.vue'
-import Sidebar from './component/sidebar.vue'
-
-export default{
-components:{Navbar,Sidebar,MapControl},
-data:()=>({
-
-})
-}
-
-</script>
-
 <style>
-   body{
-     margin:0;
-   }
+    body {
+        margin: 0;
+    }
 
     .HolyGrail {
         display: flex;
@@ -45,7 +21,7 @@ data:()=>({
 
     .HolyGrail-content {
         flex: 1;
-        position:relative;
+        position: relative;
     }
 
     .HolyGrail-nav,
@@ -57,3 +33,41 @@ data:()=>({
         order: -1;
     }
 </style>
+
+<template>
+
+<div class="HolyGrail">
+    <navbar></navbar>
+    <div class="HolyGrail-body">
+        <MapControl :items="items" sync="true" class="HolyGrail-content"></MapControl>
+        <Sidebar :items="items" class="HolyGrail-nav"></Sidebar>
+    </div>
+</div>
+
+</template>
+
+<script>
+    import Navbar from './component/navbar.vue'
+    import MapControl from './component/mapcontrol.vue'
+    import Sidebar from './component/sidebar.vue'
+
+    export default {
+        components: {
+            Navbar,
+            Sidebar,
+            MapControl
+        },
+        data(){
+          return {
+            items:[
+              {name:"title",leftUrl:"http://{s}.tile.osm.org/{z}/{x}/{y}.png",rightUrl:"http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png"},
+              {name:"test",leftUrl:"http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png",rightUrl:"http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.png"}
+            ]
+          }
+        },
+        create(){
+
+        }
+
+    }
+</script>

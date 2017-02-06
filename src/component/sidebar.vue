@@ -2,10 +2,10 @@
 
 <template>
 
-<ul>
+<ul class="list-unstyled">
     <li v-for="item in items">
-        <a>
-          {{item.title}}
+        <a class="btn btn-default btn-block" href="#">
+          {{item.name}}
         </a>
     </li>
 </ul>
@@ -14,6 +14,8 @@
 
 <script>
 
-
+export default {
+    props: ['items'],
+}
 
 </script>
