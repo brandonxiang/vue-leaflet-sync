@@ -21,30 +21,42 @@
 </template>
 
 <script>
-    import L from 'leaflet'
+    import L from 'leaflet';
+    import {mapGetters} from 'vuex'
     import css from '../../node_modules/leaflet/dist/leaflet.css';
     import '../libs/L.Map.Sync.js'
 
     export default {
-        props: ['sync','items'],
-        mounted() {
-            var mapLeft = L.map('mapleft').setView([51.505, -0.09], 13);
+      computed:mapGetters([
+        'leftUrl',
+        'rightUrl',
+        'sync',
+      ]),
+       watch:{
+         leftUrl:function(val){
+           this.leftTile.setUrl(val);
+         },
+         rightUrl:function(val){
+           this.rightTile.setUrl(val);
+         },
+        //  sync: function(val){
+        //    console.log(val)
+        //    if (val||this.mapLeft||this.mapRight) {
+        //        this.mapLeft.sync(this.mapRight)
+        //        this.mapRight.sync(this.mapLeft)
+        //    }
+        //  }
+       },
+      mounted() {
+          const mapLeft = this.mapLeft = L.map('mapleft').setView([51.505, -0.09], 13);
+          this.leftTile = L.tileLayer(this.leftUrl).addTo(mapLeft);
+          const mapRight = this.mapRight = L.map('mapright').setView([51.505, -0.09], 13);
+          this.rightTile = L.tileLayer(this.rightUrl).addTo(mapRight);
 
-            L.tileLayer(this.items[0].leftUrl, {
-                attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(mapLeft);
-
-            var mapRight = L.map('mapright').setView([51.505, -0.09], 13);
-
-            L.tileLayer(this.items[0].rightUrl, {
-                attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(mapRight);
-
-
-            if (this.sync) {
-                mapLeft.sync(mapRight)
-                mapRight.sync(mapLeft)
-            }
-        }
+          if (this.sync) {
+              mapLeft.sync(mapRight)
+              mapRight.sync(mapLeft)
+          }
+      }
     }
 </script>

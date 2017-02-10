@@ -39,8 +39,8 @@
 <div class="HolyGrail">
     <navbar></navbar>
     <div class="HolyGrail-body">
-        <MapControl :items="items" sync="true" class="HolyGrail-content"></MapControl>
-        <Sidebar :items="items" class="HolyGrail-nav"></Sidebar>
+        <MapControl class="HolyGrail-content"></MapControl>
+        <Sidebar class="HolyGrail-nav"></Sidebar>
     </div>
 </div>
 
@@ -57,17 +57,5 @@
             Sidebar,
             MapControl
         },
-        data(){
-          return {
-            items:[
-              {name:"title",leftUrl:"http://{s}.tile.osm.org/{z}/{x}/{y}.png",rightUrl:"http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png"},
-              {name:"test",leftUrl:"http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png",rightUrl:"http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.png"}
-            ]
-          }
-        },
-        create(){
-
-        }
-
     }
 </script>

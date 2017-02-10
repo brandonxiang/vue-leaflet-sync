@@ -2,21 +2,15 @@
 
 .header {
     background-image: url('../assets/header.png');
-    height: 150px;
+    background-color: #1b3fa8;
+    height: 120px;
 }
 
 </style>
 
 <template>
-
-<div class="header">
-</div>
-
+<div class="header"></div>
 </template>
 
 <script>
-
-
-
-
 </script>

@@ -3,8 +3,8 @@
 <template>
 
 <ul class="list-unstyled">
-    <li v-for="item in items">
-        <a class="btn btn-default btn-block" href="#">
+    <li v-for="item in displayItems">
+        <a class="btn btn-default btn-block" href="#" @click="setItemId(item.id)">
           {{item.name}}
         </a>
     </li>
@@ -13,9 +13,17 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex';
 
 export default {
-    props: ['items'],
+    data() {
+            return {
+                displayItems: this.$store.state.displayItems
+            }
+        },
+        methods: mapMutations([
+            'setItemId'
+          ])
 }
 
 </script>
