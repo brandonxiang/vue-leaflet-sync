@@ -13,17 +13,17 @@
 </template>
 
 <script>
-import {mapMutations} from 'vuex';
+import { mapMutations } from 'vuex';
 
 export default {
-    data() {
-            return {
-                displayItems: this.$store.state.displayItems
-            }
-        },
-        methods: mapMutations([
-            'setItemId'
-          ])
-}
+  data() {
+    return {
+      displayItems: this.$store.state.displayItems,
+    };
+  },
+  methods: mapMutations([
+    'setItemId',
+  ]),
+};
 
 </script>

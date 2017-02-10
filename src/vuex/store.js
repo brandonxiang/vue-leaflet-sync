@@ -1,5 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import mutations from './mutations';
+import getters from './getters';
 
 Vue.use(Vuex);
 
@@ -28,22 +30,6 @@ const state = {
       sync: false,
     },
   ],
-};
-
-const mutations = {
-  setDisplayItem(state, displayItems) {
-    state.displayItems = displayItems;
-  },
-  setItemId(state, itemId) {
-    state.itemId = itemId;
-  },
-};
-
-const getters = {
-  all: state => state.displayItems,
-  leftUrl: state => state.displayItems[state.itemId].leftUrl,
-  rightUrl: state => state.displayItems[state.itemId].rightUrl,
-  sync: state=> state.displayItems[state.itemId].sync,
 };
 
 export default new Vuex.Store({

@@ -47,15 +47,15 @@
 </template>
 
 <script>
-    import Navbar from './component/navbar.vue'
-    import MapControl from './component/mapcontrol.vue'
-    import Sidebar from './component/sidebar.vue'
+    import Navbar from './component/navbar.vue';
+    import MapControl from './component/mapcontrol.vue';
+    import Sidebar from './component/sidebar.vue';
 
     export default {
-        components: {
-            Navbar,
-            Sidebar,
-            MapControl
-        },
-    }
+      components: {
+        Navbar,
+        Sidebar,
+        MapControl,
+      },
+};
 </script>
