@@ -1,0 +1,38 @@
+export default {
+  itemId: 0,
+  displayItems: [
+    {
+      id: 0,
+      name: 'title',
+      leftUrl: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+      leftCenter: [51.505, -0.09],
+      leftZoom: 13,
+      rightUrl: 'http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png',
+      rightCenter: [51.505, -0.09],
+      rightZoom: 13,
+      sync: true,
+    },
+    {
+      id: 1,
+      name: 'test',
+      leftUrl: 'http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png',
+      leftCenter: [24, 114],
+      leftZoom: 13,
+      rightUrl: 'http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.png',
+      rightCenter: [36, 112],
+      rightZoom: 13,
+      sync: true,
+    },
+    {
+      id: 2,
+      name: 'test1',
+      leftUrl: 'http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png',
+      leftCenter: [51.505, -0.09],
+      leftZoom: 13,
+      rightUrl: 'http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.png',
+      rightCenter: [51.505, -0.09],
+      rightZoom: 13,
+      sync: false,
+    },
+  ],
+};

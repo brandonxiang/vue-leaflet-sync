@@ -30,24 +30,40 @@
   computed: mapGetters([
         'leftUrl',
         'rightUrl',
+        'leftCenter',
+        'rightCenter',
+        'leftZoom',
+        'rightZoom',
         'sync',
   ]),
   watch: {
         leftUrl(val) {
-          this.leftTile.setUrl(val);
+          this.tileLeft.setUrl(val);
         },
         rightUrl(val) {
-          this.rightTile.setUrl(val);
+          this.tileRight.setUrl(val);
+        },
+        leftCenter(val){
+          this.mapLeft.setView(val, this.leftZoom);
+        },
+        rightCenter(val){
+          this.mapRight.setView(val, this.rightZoom);
+        },
+        leftZoom(val){
+          this.mapLeft.setZoom(val);
+        },
+        rightZoom(val){
+          this.mapRight.setZoom(val);
         },
         sync(val) {
           this.syncStart(val);
         },
   },
   mounted() {
-        const mapLeft = this.mapLeft = L.map('mapleft').setView([51.505, -0.09], 13);
-        this.leftTile = L.tileLayer(this.leftUrl).addTo(mapLeft);
-        const mapRight = this.mapRight = L.map('mapright').setView([51.505, -0.09], 13);
-        this.rightTile = L.tileLayer(this.rightUrl).addTo(mapRight);
+        const mapLeft = this.mapLeft = L.map('mapleft').setView(this.leftCenter, this.leftZoom);
+        this.tileLeft = L.tileLayer(this.leftUrl).addTo(mapLeft);
+        const mapRight = this.mapRight = L.map('mapright').setView(this.rightCenter, this.rightZoom);
+        this.tileRight = L.tileLayer(this.rightUrl).addTo(mapRight);
         this.syncStart(this.sync);
   },
   methods: {
@@ -61,5 +77,6 @@
           }
         },
   },
+
 };
 </script>
