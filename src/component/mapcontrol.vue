@@ -24,14 +24,15 @@
   import L from 'leaflet';
   import { mapGetters } from 'vuex';
   import css from '../../node_modules/leaflet/dist/leaflet.css';
+  import '../libs/rastercoord.js'
   import '../libs/L.Map.Sync.js';
 
   export default {
   computed: mapGetters([
         'leftUrl',
         'rightUrl',
-        'leftCenter',
-        'rightCenter',
+        'leftSize',
+        'rightSize',
         'leftZoom',
         'rightZoom',
         'sync',
@@ -43,11 +44,15 @@
         rightUrl(val) {
           this.tileRight.setUrl(val);
         },
-        leftCenter(val){
-          this.mapLeft.setView(val, this.leftZoom);
+        leftSize(val){
+          if(this.rcLeft){
+            this.mapLeft.setView(this.rcLeft.unproject([val[0]/2, val[1]/2]), this.leftZoom);
+          }
         },
-        rightCenter(val){
-          this.mapRight.setView(val, this.rightZoom);
+        rightSize(val){
+          if(this.rcRight){
+            this.mapRight.setView(this.rcRight.unproject([val[0]/2, val[1]/2]), this.rightZoom);
+          }
         },
         leftZoom(val){
           this.mapLeft.setZoom(val);
@@ -60,9 +65,18 @@
         },
   },
   mounted() {
-        const mapLeft = this.mapLeft = L.map('mapleft').setView(this.leftCenter, this.leftZoom);
+        const imgLeft = this.leftSize;
+        const mapLeft = this.mapLeft = L.map('mapleft', {maxZoom:5, minZoom:2});
+        const rcLeft = this.rcLeft = new L.RasterCoords(this.mapLeft,imgLeft);
+        mapLeft.setView(rcLeft.unproject([imgLeft[0]/2, imgLeft[1]/2]),this.leftZoom);
+        rcLeft.setMaxBounds();
         this.tileLeft = L.tileLayer(this.leftUrl).addTo(mapLeft);
-        const mapRight = this.mapRight = L.map('mapright').setView(this.rightCenter, this.rightZoom);
+
+        const imgRight = this.rightSize;
+        const mapRight = this.mapRight = L.map('mapright', {maxZoom:5, minZoom:2});
+        const rcRight = this.rcRight = new L.RasterCoords(this.mapRight,imgRight);
+        mapRight.setView(rcRight.unproject([imgRight[0]/2, imgRight[1]/2]), this.rightZoom);
+        rcRight.setMaxBounds();
         this.tileRight = L.tileLayer(this.rightUrl).addTo(mapRight);
         this.syncStart(this.sync);
   },
