@@ -44,23 +44,23 @@
 <div class="HolyGrail">
     <navbar></navbar>
     <div class="HolyGrail-body">
-        <MapControl class="HolyGrail-content"></MapControl>
-        <Sidebar class="HolyGrail-nav"></Sidebar>
+        <map-content class="HolyGrail-content"></map-content>
+        <sidebar class="HolyGrail-nav"></sidebar>
     </div>
 </div>
 
 </template>
 
 <script>
-    import Navbar from './component/navbar';
-    import MapControl from './component/mapcontrol';
-    import Sidebar from './component/sidebar';
+    import Navbar from './components/Navbar';
+    import MapContent from './components/MapContent';
+    import Sidebar from './components/Sidebar';
 
     export default {
       components: {
         Navbar,
         Sidebar,
-        MapControl,
+        MapContent,
       },
 };
 </script>

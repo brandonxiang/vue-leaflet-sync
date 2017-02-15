@@ -1,9 +1,13 @@
 
 
 <template>
-<b-button-group vertical="true">  
+
+
+
+<b-button-group :vertical="true">  
   <b-button  v-for="item in displayItems" href="#" @click="setItemId(item.id)">{{item.name}}</b-button>  
 </b-button-group>
+
 
 </template>
 
