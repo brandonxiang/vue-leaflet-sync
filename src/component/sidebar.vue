@@ -2,13 +2,12 @@
 
 <template>
 
-<ul class="list-unstyled">
-    <li v-for="item in displayItems">
-        <a class="btn btn-default btn-block" href="#" @click="setItemId(item.id)">
-          {{item.name}}
-        </a>
-    </li>
-</ul>
+
+
+<b-button-group vertical="true">  
+  <b-button  v-for="item in displayItems" href="#" @click="setItemId(item.id)">{{item.name}}</b-button>  
+</b-button-group>
+
 
 </template>
 
@@ -19,6 +18,7 @@ export default {
   data() {
     return {
       displayItems: this.$store.state.displayItems,
+      vertical: true,
     };
   },
   methods: mapMutations([

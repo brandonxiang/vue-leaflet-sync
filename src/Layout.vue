@@ -32,6 +32,11 @@
     .HolyGrail-nav {
         order: -1;
     }
+
+    .leaflet-container{
+      background:#fff!important;
+      border-left: 1px solid #333;
+    }
 </style>
 
 <template>

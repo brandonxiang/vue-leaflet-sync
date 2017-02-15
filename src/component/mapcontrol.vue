@@ -71,8 +71,8 @@
       this.rcLeft = new L.RasterCoords(this.mapLeft, imgLeft);
       const rcLeft = this.rcLeft;
       mapLeft.setView(rcLeft.unproject([imgLeft[0] / 2, imgLeft[1] / 2]), this.leftZoom);
-      rcLeft.setMaxBounds();
-      this.tileLeft = L.tileLayer(this.leftUrl).addTo(mapLeft);
+      const boundLeft = rcLeft.setMaxBounds();
+      this.tileLeft = L.tileLayer(this.leftUrl, { bounds: boundLeft }).addTo(mapLeft);
 
       const imgRight = this.rightSize;
       this.mapRight = L.map('mapright', { maxZoom: 5, minZoom: 2 });
@@ -80,8 +80,8 @@
       this.rcRight = new L.RasterCoords(this.mapRight, imgRight);
       const rcRight = this.rcRight;
       mapRight.setView(rcRight.unproject([imgRight[0] / 2, imgRight[1] / 2]), this.rightZoom);
-      rcRight.setMaxBounds();
-      this.tileRight = L.tileLayer(this.rightUrl).addTo(mapRight);
+      const boundRight = rcRight.setMaxBounds();
+      this.tileRight = L.tileLayer(this.rightUrl, { bounds: boundRight }).addTo(mapRight);
       this.syncStart(this.sync);
     },
     methods: {

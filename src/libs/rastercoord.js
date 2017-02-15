@@ -37,7 +37,6 @@ L.RasterCoords.prototype = {
 	 * @return {L.LatLng} - internal coordinates
 	 */
 	unproject: function(coords) {
-				console.log(coords,this.zoom);
 		return this.map.unproject(coords, this.zoom);
 
 	},
@@ -56,5 +55,6 @@ L.RasterCoords.prototype = {
 		var southWest = this.unproject([0, this.height]);
 		var northEast = this.unproject([this.width, 0]);
 		this.map.setMaxBounds(new L.LatLngBounds(southWest, northEast));
+		return new L.LatLngBounds(southWest, northEast);
 	}
 };
