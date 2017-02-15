@@ -47,9 +47,9 @@
 </template>
 
 <script>
-    import Navbar from './component/navbar.vue';
-    import MapControl from './component/mapcontrol.vue';
-    import Sidebar from './component/sidebar.vue';
+    import Navbar from './component/navbar';
+    import MapControl from './component/mapcontrol';
+    import Sidebar from './component/sidebar';
 
     export default {
       components: {
