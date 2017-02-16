@@ -59,6 +59,7 @@
     import Navbar from './components/Navbar';
     import MapContent from './components/MapContent';
     import Sidebar from './components/Sidebar';
+    import { mapMutations } from 'vuex';
 
     export default {
       components: {
@@ -66,5 +67,13 @@
         Sidebar,
         MapContent,
       },
+      watch: {
+        $route(to, from) {
+          this.setItemId(to.params.id);
+        },
+      },
+      methods: mapMutations([
+        'setItemId',
+      ]),
 };
 </script>
