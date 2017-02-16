@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar">
-    <el-menu default-active="0" class="el-menu-bar" :router="true" @select="onClick">
-      <el-menu-item :index="item.id" v-for="item in displayItems" :route="'/'+item.id">{{item.name}}</el-menu-item>
+    <el-menu default-active="0" class="el-menu-bar" :router="true">
+      <el-menu-item :index="item.id" v-for="item in displayItems" :route="item.id">{{item.name}}</el-menu-item>
      </el-menu>
   </div>
 
@@ -24,9 +24,6 @@ export default {
     ...mapMutations([
       'setItemId',
     ]),
-    onClick(){
-      // console.log(this.$route.params.id);
-    }
   },
 };
 

@@ -52,14 +52,14 @@
         this.tileRight.setUrl(val);
       },
       leftSize(val) {
-        if (this.rcLeft) {
-          this.mapLeft.setView(this.rcLeft.unproject([val[0] / 2, val[1] / 2]), this.leftZoom);
-        }
+          const rcLeft = new L.RasterCoords(this.mapLeft, val);
+          this.mapLeft.setView(rcLeft.unproject([val[0] / 2, val[1] / 2]), this.leftZoom);
+          this.tileLeft.options.bounds = rcLeft.setMaxBounds();
       },
       rightSize(val) {
-        if (this.rcRight) {
-          this.mapRight.setView(this.rcRight.unproject([val[0] / 2, val[1] / 2]), this.rightZoom);
-        }
+          const rcRight = new L.RasterCoords(this.mapRight, val);
+          this.mapRight.setView(rcRight.unproject([val[0] / 2, val[1] / 2]), this.rightZoom);
+          this.tileRight.options.bounds = rcRight.setMaxBounds();
       },
       leftZoom(val) {
         this.mapLeft.setZoom(val);
@@ -72,11 +72,11 @@
       },
     },
     mounted() {
+      console.log(1)
       const imgLeft = this.leftSize;
       this.mapLeft = L.map('mapleft', { maxZoom: 5, minZoom: 2 });
       const mapLeft = this.mapLeft;
-      this.rcLeft = new L.RasterCoords(this.mapLeft, imgLeft);
-      const rcLeft = this.rcLeft;
+      const rcLeft = new L.RasterCoords(this.mapLeft, imgLeft);
       mapLeft.setView(rcLeft.unproject([imgLeft[0] / 2, imgLeft[1] / 2]), this.leftZoom);
       const boundLeft = rcLeft.setMaxBounds();
       this.tileLeft = L.tileLayer(this.leftUrl, { bounds: boundLeft }).addTo(mapLeft);
@@ -84,8 +84,7 @@
       const imgRight = this.rightSize;
       this.mapRight = L.map('mapright', { maxZoom: 5, minZoom: 2 });
       const mapRight = this.mapRight;
-      this.rcRight = new L.RasterCoords(this.mapRight, imgRight);
-      const rcRight = this.rcRight;
+      const rcRight = new L.RasterCoords(this.mapRight, imgRight);
       mapRight.setView(rcRight.unproject([imgRight[0] / 2, imgRight[1] / 2]), this.rightZoom);
       const boundRight = rcRight.setMaxBounds();
       this.tileRight = L.tileLayer(this.rightUrl, { bounds: boundRight }).addTo(mapRight);
