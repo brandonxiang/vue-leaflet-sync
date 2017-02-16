@@ -1,7 +1,14 @@
 <style>
-    body {
-        margin: 0;
-    }
+      body, html {
+          margin: 0;
+          height:100%;
+      }
+
+      * {
+          margin: 0;
+          padding: 0;
+          text-align: center;
+      }
 
     .HolyGrail {
         display: flex;
@@ -22,6 +29,8 @@
     .HolyGrail-content {
         flex: 1;
         position: relative;
+        display: flex;
+        flex-direction: column;
     }
 
     .HolyGrail-nav,
@@ -31,11 +40,6 @@
 
     .HolyGrail-nav {
         order: -1;
-    }
-
-    .leaflet-container{
-      background:#fff!important;
-      border-left: 1px solid #333;
     }
 </style>
 

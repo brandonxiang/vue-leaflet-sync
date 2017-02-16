@@ -3,12 +3,18 @@
         display: flex;
         justify-content: space-between;
         width: 100%;
-        height:100%;
+        height: 100%;
+        position:relative;
     }
 
     #mapleft,
     #mapright {
         width: 50%;
+    }
+
+    .leaflet-container{
+      background:#fff!important;
+      border-left: 1px solid #c5c5c5;
     }
 </style>
 
