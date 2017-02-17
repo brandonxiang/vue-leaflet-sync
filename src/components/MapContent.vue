@@ -1,13 +1,17 @@
 <template>
-  <el-tabs v-model="activeName">
-    <el-tab-pane label="首页" name="index"><map-control></map-control></el-tab-pane>
-    <el-tab-pane label="居民区" name="resident">居民区</el-tab-pane>
-    <el-tab-pane label="工业区" name="industry">工业区</el-tab-pane>
+  <div>
+  <el-tabs v-model="activeName" @tab-click="onClick">
+    <el-tab-pane label="首页" name="index"></el-tab-pane>
+    <el-tab-pane label="居民区" name="resident" ></el-tab-pane>
+    <el-tab-pane label="工业区" name="industry" @tab-click="setItemType('industry')"></el-tab-pane>
   </el-tabs>
+  <map-control></map-control>
+  </div>
 </template>
 
 <script>
 import MapControl from './MapControl';
+import {mapMutations} from 'vuex';
 
 export default{
   data() {
@@ -17,6 +21,14 @@ export default{
   },
   components: {
     MapControl,
+  },
+  methods:{
+    ...mapMutations([
+      'setItemType',
+    ]),
+    onClick(e){
+      this.setItemType(e.name);
+    }
   },
 };
 </script>

@@ -7,8 +7,7 @@
         position:relative;
     }
 
-    #mapleft,
-    #mapright {
+    .map>div {
         width: 50%;
     }
 
@@ -72,7 +71,6 @@
       },
     },
     mounted() {
-      console.log(1)
       const imgLeft = this.leftSize;
       this.mapLeft = L.map('mapleft', { maxZoom: 5, minZoom: 2 });
       const mapLeft = this.mapLeft;
